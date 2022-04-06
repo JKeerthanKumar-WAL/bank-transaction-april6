@@ -76,7 +76,7 @@ router.put("/banktransaction", async (req, res) => {
         const senderBalance = await balanceModel.findOne({
           where: { userId: sender.id },
         });
-        if (senderBalance < amount) {
+        if (senderBalance.balance < amount) {
           res.json({
             status: 0,
             data: "Insufficient balance to perform transaction",
